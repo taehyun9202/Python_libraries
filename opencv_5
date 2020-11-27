@@ -1,0 +1,35 @@
+import cv2
+import numpy as np
+
+image = cv2.imread('image.jpg', cv2.IMREAD_GRAYSCALE)
+cv2.imshow('image', image)
+cv2.waitKey(0)
+
+# images = []
+# ret, thres1 = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
+# ret, thres2 = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY_INV)
+# ret, thres3 = cv2.threshold(image, 127, 255, cv2.THRESH_TRUNC)
+# ret, thres4 = cv2.threshold(image, 127, 255, cv2.THRESH_TOZERO)
+# ret, thres5 = cv2.threshold(image, 127, 255, cv2.THRESH_TOZERO_INV)
+#
+#
+# images.append(thres1)
+# images.append(thres2)
+# images.append(thres3)
+# images.append(thres4)
+# images.append(thres5)
+#
+#
+#
+# for index, i in enumerate(images):
+#     cv2.imshow("IU {}".format(index+1), i)
+#     cv2.waitKey(0)
+
+
+Mean = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 21, 3)
+cv2.imshow("Mean", Mean)
+cv2.waitKey(0)
+
+Gaus = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 21, 3)
+cv2.imshow("Gaussain", Gaus)
+cv2.waitKey(0)
